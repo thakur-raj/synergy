@@ -1,4 +1,8 @@
+import { ModeToggle } from '@/components/global/mode-toggle'
+import { UserButton } from '@clerk/nextjs'
 import { User } from '@clerk/nextjs/server'
+import Image from 'next/image'
+import Link from 'next/link'
 import React from 'react'
 
 type Props = {
@@ -7,7 +11,25 @@ type Props = {
 
 const Navigation = (props: Props) => {
   return (
-    <div>Navigation</div>
+    <div className="p-4 flex items-center justify-between relative">
+      <aside className="flex items-center gap-2"> 
+      <Image src={'/assets/synergy-logo.svg'} alt="synergy logo" width={40} height={40}/>
+      <span className="text-xl font-bold">Synergy.</span>
+      </aside>
+      <nav className='hidden md:block absolute left-[50%] top-[50%] transform translate-x-[-50%] translate-y-[-50%]'>
+        <ul className="flex items-center justify-center gap-8">
+          <Link href={'#'}>Pricing</Link>
+          <Link href={'#'}>About</Link>
+          <Link href={'#'}>Docs</Link>
+          <Link href={'#'}>Features</Link>
+        </ul>
+      </nav>
+      <aside className='flex gap-2 items-center'>
+      <Link href={'/agency'} className='bg-primary text-white p-2 px-4 rounded-md hover:bg-primary/90'> Login</Link>
+      </aside>
+      <UserButton />
+      <ModeToggle />
+    </div>
   )
 }
 
